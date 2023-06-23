@@ -35,6 +35,10 @@ nav {
   align-items: center;
 }
 
+.center-row{
+  justify-content: center;
+}
+
 .col {
   display: flex;
   flex-direction: column;
