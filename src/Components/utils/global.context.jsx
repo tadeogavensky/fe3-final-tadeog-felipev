@@ -26,6 +26,7 @@ export const ContextGlobal = createContext(undefined);
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+
   const setTheme = (theme) => {
     dispatch({ type: "SET_THEME", payload: theme });
   };

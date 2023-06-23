@@ -131,3 +131,7 @@ tr:nth-child(even) {
 .dark  a {
   color: white;
 }
+
+.dark #h1 {
+  color: white;
+}

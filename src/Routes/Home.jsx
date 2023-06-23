@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import Card from "../Components/Card";
 import { ContextGlobal } from "../Components/utils/global.context";
 import axios from "axios";
+import { THEME } from "../assets/themes/theme"; //1
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
-  const { state } = useContext(ContextGlobal);
-  const { theme } = state;
+  const { state } = useContext(ContextGlobal);  //2
+  const { theme } = state;  //3
 
   const [dentists, setDentists] = useState([]);
 
@@ -22,14 +23,14 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="">
-    <h1>Home</h1>
-    <div className="card-grid">
-      {dentists.map((dentist, index) => (
-        <Card dentist={dentist} key={index} />
-      ))}
-    </div>
-  </main>
+    <main className={theme === THEME.darkMode ? "dark" : ""}>
+      <h1 id="#title">Home</h1>
+      <div className="card-grid">
+        {dentists.map((dentist, index) => (
+          <Card dentist={dentist} key={index} />
+        ))}
+      </div>
+    </main>
   );
 };
 
