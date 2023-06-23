@@ -6,8 +6,11 @@ const Card = (props) => {
   const { state, addFav, removeFav } = useContext(ContextGlobal);
   const location = useLocation();
 
+  const [faved, isFaved] = useState(false);
+
   const handleFav = () => {
     addFav(props.dentist);
+    isFaved(true)
   };
 
   const handleDeleteFav = () => {
@@ -31,7 +34,7 @@ const Card = (props) => {
           Delete Fav
         </button>
       ) : (
-        <button onClick={handleFav} className="favButton">
+        <button onClick={handleFav} className="favButton" disabled={faved}>
           Add Fav
         </button>
       )}
