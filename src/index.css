@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -14,25 +15,43 @@ code {
 .favButton {
   background-color: rgba(136, 136, 136, 0.116);
   padding: 10px;
+  margin-top: 10px;
   border: none;
   width: 100%;
   cursor: pointer;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
-h1 {
-  text-align: center;
-}
+
 
 nav {
   display: flex;
 
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+  background-color: #f1f1f1;
+}
+
+nav img {
+  height: 40px;
+}
+nav a {
+  color: #000;
+  text-decoration: none;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .row {
   display: flex;
   align-items: center;
+  
 }
 
 .center-row{
@@ -45,25 +64,23 @@ nav {
   align-items: center;
 }
 
-a {
-  color: #000;
-  text-decoration: none;
-  margin: 30px;
-  cursor: pointer;
-  font-size: 1.5rem;
-}
+
 a:hover {
   color: rgb(136, 136, 136);
+}
+
+main h1{
+  text-align: center;
+  font-size: xx-large;
 }
 
 footer {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
   position: relative;
   bottom: 0;
-  width: 90%;
+  width: 100%;
   height: 40px;
   margin-top: 2rem;
 }
@@ -88,16 +105,50 @@ form {
 
 .card {
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
-  align-items: center;
   width: 200px;
-  padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
+  border-radius: 15px;
+  position: relative;
+  white-space: normal;
+}
+
+.card p {
+  background: #1291c4;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  color: #fff;
+  font-size: 1rem;
+  left: 0;
+  padding: 9px;
+  position: absolute;
+  top: 0;
+  margin: 0;
+}
+
+.card h1 {
+  margin-top: 8px;
+  font-size: 15px;
+  top: 0px;
+  padding-right: 20px;
+  align-self: end;
+  font-style:italic;
+}
+.card h4 {
+  margin: 0;
+  margin-top: 10px;
+  align-self: center;
+}
+.card a {
+  margin:0;
+  margin-top: 5px;
+  text-decoration: none;
+  color: #1291c4;
+
 }
 
 .card:hover {
-  border: 0.5px solid rgb(206, 217, 142);
+  border: 0.5px solid #54b3c9;
 }
 
 .card-grid {
@@ -130,7 +181,7 @@ tr:nth-child(even) {
 }
 
 .dark {
-  background-color: #12121296;
+  background-color: #343541;
 }
 .dark  a {
   color: white;
@@ -139,3 +190,79 @@ tr:nth-child(even) {
 .dark #h1 {
   color: white;
 }
+
+/* IOS BUTTON */
+
+.toggle {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle input[type="checkbox"] {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.icon {
+  position: absolute;
+  top: 4px;
+  transition: .4s;
+}
+
+.sun {
+  left: 4px;
+  width: 26px;
+  height: 26px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.moon {
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  background-color: #888;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+input:checked + .slider .sun {
+  opacity: 0;
+}
+
+input:checked + .slider .moon {
+  opacity: 1;
+}
+
