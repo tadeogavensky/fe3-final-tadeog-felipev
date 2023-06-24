@@ -23,11 +23,8 @@ code {
   border-bottom-right-radius: 15px;
 }
 
-
-
 nav {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
@@ -51,11 +48,14 @@ nav a {
 .row {
   display: flex;
   align-items: center;
-  
 }
 
-.center-row{
+.center-row {
   justify-content: center;
+}
+
+.between-row {
+  justify-content: space-between;
 }
 
 .col {
@@ -64,20 +64,19 @@ nav a {
   align-items: center;
 }
 
+.col-start {
+  align-items: flex-start;
+}
 
 a:hover {
   color: rgb(136, 136, 136);
 }
 
-main h1{
+main h1 {
   text-align: center;
   margin: 0;
   font-size: xx-large;
   padding-bottom: 20px;
-}
-
-.dark > h1{
-color: white;
 }
 
 footer {
@@ -138,7 +137,7 @@ form {
   top: 0px;
   padding-right: 20px;
   align-self: end;
-  font-style:italic;
+  font-style: italic;
 }
 .card h4 {
   margin: 0;
@@ -146,11 +145,10 @@ form {
   align-self: center;
 }
 .card a {
-  margin:0;
+  margin: 0;
   margin-top: 5px;
   text-decoration: none;
   color: #1291c4;
-
 }
 
 .card:hover {
@@ -186,15 +184,21 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+/*DARK MODE*/
+
 .dark {
   background-color: #343541;
 }
-.dark  a {
+
+.dark a {
   color: white;
 }
 
+.dark > h1 {
+  color: white;
+}
 
-.dark  #detail-link {
+.dark #detail-link {
   color: blue;
 }
 
@@ -202,7 +206,7 @@ tr:nth-child(even) {
   color: white;
 }
 
-.dark .card{
+.dark .card {
   background-color: white;
 }
 
@@ -227,7 +231,7 @@ tr:nth-child(even) {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 34px;
 }
 
@@ -239,14 +243,14 @@ tr:nth-child(even) {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
 .icon {
   position: absolute;
   top: 4px;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .sun {
@@ -266,7 +270,7 @@ tr:nth-child(even) {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:checked + .slider:before {
@@ -281,3 +285,39 @@ input:checked + .slider .moon {
   opacity: 1;
 }
 
+#mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  #desktop {
+    display: none;
+  }
+  #mobile {
+    display: block;
+    position: relative;
+  }
+
+  .menuBtn {
+    font-size: 2rem;
+    border: none;
+  }
+
+  .dark .menuBtn{
+    background-color: inherit;
+    color: white;
+  }
+
+  .sideMenu {
+    position: absolute;
+    background-color: #ccc;
+    top: 70px;
+    width: 60%;
+    height: 100vh;
+    left: 0;
+    color: white;
+    transition: all ease-in-out 300ms;
+    z-index: 2;
+    overflow: hidden;
+  }
+}

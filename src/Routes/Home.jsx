@@ -23,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className={theme === THEME.darkMode ? "dark" : ""}>
+    <main className={theme === THEME.darkMode ? "dark home" : ""}>
       <h1 id="#title">Home</h1>
       <div className="card-grid">
         {dentists.map((dentist, index) => (
