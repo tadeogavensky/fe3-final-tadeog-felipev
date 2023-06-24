@@ -23,11 +23,11 @@ const Card = (props) => {
   return (
     <div className="card">
       <h1>{props.dentist.username}</h1>
-      <img src={doctor}/>
+      <img src={doctor} alt="dentist-img"/>
       <h4>{props.dentist.name}</h4>
       <p>{props.dentist.id}</p>
 
-      <Link className="col" to={`detail/${props.dentist.id}`}>
+      <Link className="col" to={`detail/${props.dentist.id}`} id="detail-link">
         Ir al detalle
       </Link>
 

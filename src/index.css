@@ -71,7 +71,13 @@ a:hover {
 
 main h1{
   text-align: center;
+  margin: 0;
   font-size: xx-large;
+  padding-bottom: 20px;
+}
+
+.dark > h1{
+color: white;
 }
 
 footer {
@@ -187,8 +193,17 @@ tr:nth-child(even) {
   color: white;
 }
 
+
+.dark  #detail-link {
+  color: blue;
+}
+
 .dark #h1 {
   color: white;
+}
+
+.dark .card{
+  background-color: white;
 }
 
 /* IOS BUTTON */
