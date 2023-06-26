@@ -23,6 +23,15 @@ code {
   border-bottom-right-radius: 15px;
 }
 
+.favButton .solid-star-icon {
+  color: #ffa500;
+}
+
+.favButton .regular-star-icon {
+  color: black;
+}
+
+
 nav {
   display: flex;
   justify-content: space-between;

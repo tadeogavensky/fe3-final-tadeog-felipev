@@ -1,7 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ContextGlobal } from "./utils/global.context";
-import doctor from "../assets/images/doctor.jpg"
+import doctor from "../assets/images/doctor.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 const Card = (props) => {
   const { state, addFav, removeFav } = useContext(ContextGlobal);
@@ -11,7 +14,7 @@ const Card = (props) => {
 
   const handleFav = () => {
     addFav(props.dentist);
-    isFaved(true)
+    isFaved(true);
   };
 
   const handleDeleteFav = () => {
@@ -20,10 +23,17 @@ const Card = (props) => {
 
   const isFavPage = location.pathname === "/favs";
 
+  // CAMBIA ESTRELLA REGULAR A SOLID
+  const [isSolid, setIsSolid] = useState(false);
+
+  const handleIconClick = () => {
+    setIsSolid(!isSolid);
+  };
+
   return (
     <div className="card">
       <h1>{props.dentist.username}</h1>
-      <img src={doctor} alt="dentist-img"/>
+      <img src={doctor} alt="dentist-img" />
       <h4>{props.dentist.name}</h4>
       <p>{props.dentist.id}</p>
 
@@ -31,15 +41,17 @@ const Card = (props) => {
         Ir al detalle
       </Link>
 
-      {isFavPage ? (
-        <button onClick={handleDeleteFav} className="favButton">
-          Delete Fav
-        </button>
-      ) : (
-        <button onClick={handleFav} className="favButton" disabled={faved}>
-          Add Fav
-        </button>
-      )}
+      <button
+        onClick={isFavPage ? handleDeleteFav : handleFav} //acorte el codigo
+        className="favButton"
+        disabled={isFavPage ? false : faved}
+      >
+        <FontAwesomeIcon
+          icon={isSolid ? solidStar : regularStar}
+          onClick={handleIconClick}
+          style={{ color: isSolid ? '#ffa500' : 'black' }}
+        />
+      </button>
     </div>
   );
 };
