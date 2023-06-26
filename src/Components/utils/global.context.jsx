@@ -20,8 +20,7 @@ const reducer = (state, action) => {
       localStorage.setItem("favData", JSON.stringify(filteredData));
       return { ...state, data: filteredData };
     case "GET_FAVS":
-      const favData = JSON.parse(localStorage.getItem("favData")) || [];
-      return { ...state, data: favData };
+      return { ...state, data: action.payload };
     default:
       return state;
   }
@@ -39,8 +38,7 @@ export const ContextProvider = ({ children }) => {
   };
 
   const addFav = (item) => {
-    dispatch({ type: "ADD_FAV", payload: {...item, isFav:true }});
-    localStorage.setItem("favs", item);
+    dispatch({ type: "ADD_FAV", payload: item });
     console.log(item);
   };
 

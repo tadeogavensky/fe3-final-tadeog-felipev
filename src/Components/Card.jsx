@@ -11,30 +11,30 @@ const Card = (props) => {
   const location = useLocation();
 
   const [faved, isFaved] = useState(false);
-  const [dentist, setDentist] = useState([])
+  const [dentists, setDentists] = useState({});
 
   const handleFav = () => {
-    addFav(props.dentist);
+    addFav({ ...props.dentist, isFav: true });
+    setIsSolid(!isSolid);
+
     isFaved(true);
   };
-
-
-  useEffect(() => {
-    setDentist(getFavs())
-  }, []);
 
   const handleDeleteFav = () => {
     removeFav(props.dentist);
   };
 
+
+  useEffect(() => {
+    console.log('getFavs() :>> ', getFavs());
+  }, [])
+  
+
+
   const isFavPage = location.pathname === "/favs";
 
   // CAMBIA ESTRELLA REGULAR A SOLID
   const [isSolid, setIsSolid] = useState(false);
-
-  const handleIconClick = () => {
-    setIsSolid(!isSolid);
-  };
 
   return (
     <div className="card">
@@ -48,14 +48,17 @@ const Card = (props) => {
       </Link>
 
       <button
-        onClick={isFavPage ? handleDeleteFav : handleFav} //acorte el codigo
+        onClick={isFavPage ? handleDeleteFav : handleFav}
         className="favButton"
         disabled={isFavPage ? false : faved}
+        id="btnStar"
       >
         <FontAwesomeIcon
-          icon={isFavPage ? solidStar : regularStar}
-          onClick={handleIconClick}
-          style={{ color: isFavPage ? '#ffa500' : 'black' }}
+          icon={isSolid || props.dentist.isFav   ? solidStar : regularStar}
+          style={{
+            color: isSolid || props.dentist.isFav ? "#ffa500" : "black",
+          }}
+          id="star"
         />
       </button>
     </div>

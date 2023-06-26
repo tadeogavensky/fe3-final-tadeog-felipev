@@ -12,12 +12,14 @@ const Home = () => {
 
   const [dentists, setDentists] = useState([]);
 
+
+
   const fetchDentists = () => {
     axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
       const data = res.data.map((dentist) => {
         return {...dentist, isFav: false}
       })
-      console.log(data);
+  
       setDentists(data);
       
     });
