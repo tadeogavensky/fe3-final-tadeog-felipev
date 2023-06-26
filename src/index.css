@@ -31,6 +31,7 @@ code {
   color: black;
 }
 
+/* NAVBAR */
 
 nav {
   display: flex;
@@ -38,6 +39,8 @@ nav {
   align-items: center;
   padding: 1rem;
   background-color: #f1f1f1;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 nav img {
@@ -48,7 +51,7 @@ nav a {
   text-decoration: none;
   margin: 10px;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   padding-left: 20px;
   padding-right: 20px;
@@ -81,11 +84,23 @@ a:hover {
   color: rgb(136, 136, 136);
 }
 
-main h1 {
+.toggle-container {
+  width: 200px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+}
+
+#title {
+  padding: 20px;
+  text-align: center;
+}
+
+.card h1 {
   text-align: center;
   margin: 0;
   font-size: xx-large;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 footer {
@@ -97,6 +112,7 @@ footer {
   width: 100%;
   height: 40px;
   margin-top: 2rem;
+  padding-bottom: 20px;
 }
 
 footer > img {
@@ -221,11 +237,15 @@ tr:nth-child(even) {
 
 /* IOS BUTTON */
 
+label.toggle {
+}
+
 .toggle {
   display: inline-block;
   position: relative;
   width: 60px;
   height: 34px;
+  align-self: center;
 }
 
 .toggle input[type="checkbox"] {
@@ -312,7 +332,7 @@ input:checked + .slider .moon {
     border: none;
   }
 
-  .dark .menuBtn{
+  .dark .menuBtn {
     background-color: inherit;
     color: white;
   }

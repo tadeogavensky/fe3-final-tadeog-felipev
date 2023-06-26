@@ -39,8 +39,9 @@ export const ContextProvider = ({ children }) => {
   };
 
   const addFav = (item) => {
-    dispatch({ type: "ADD_FAV", payload: item });
+    dispatch({ type: "ADD_FAV", payload: {...item, isFav:true }});
     localStorage.setItem("favs", item);
+    console.log(item);
   };
 
   const removeFav = (item) => {

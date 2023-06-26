@@ -40,12 +40,14 @@ const Navbar = () => {
           <Link to={"/favs"}>Favs</Link>
         </div>
 
-        <label class="toggle">
-          <span class="icon sun"></span>
-          <span class="icon moon"></span>
-          <input onClick={toggleTheme} type="checkbox" />
-          <span class="slider"></span>
-        </label>
+        <div className="toggle-container">
+          <label className="toggle">
+            <span className="icon sun"></span>
+            <span className="icon moon"></span>
+            <input onClick={toggleTheme} type="checkbox" />
+            <span className="slider"></span>
+          </label>
+        </div>
       </nav>
       <nav id="mobile" className={theme === THEME.darkMode ? "dark" : ""}>
         <div className="row between-row">
@@ -59,11 +61,11 @@ const Navbar = () => {
             </button>
           )}
 
-          <label class="toggle">
-            <span class="icon sun"></span>
-            <span class="icon moon"></span>
+          <label className="toggle">
+            <span className="icon sun"></span>
+            <span className="icon moon"></span>
             <input onClick={toggleTheme} type="checkbox" />
-            <span class="slider"></span>
+            <span className="slider"></span>
           </label>
         </div>
         {showSidebar && (

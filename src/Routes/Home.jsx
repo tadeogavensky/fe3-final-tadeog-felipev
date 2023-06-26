@@ -14,17 +14,23 @@ const Home = () => {
 
   const fetchDentists = () => {
     axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-      setDentists(res.data);
+      const data = res.data.map((dentist) => {
+        return {...dentist, isFav: false}
+      })
+      console.log(data);
+      setDentists(data);
+      
     });
   };
 
   useEffect(() => {
     fetchDentists();
+    console.log('useEffect');
   }, []);
 
   return (
     <main className={theme === THEME.darkMode ? "dark home" : ""}>
-      <h1 id="#title">Home</h1>
+      <h1 id="title">Home</h1>
       <div className="card-grid">
         {dentists.map((dentist, index) => (
           <Card dentist={dentist} key={index} />

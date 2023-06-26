@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ContextGlobal } from "./utils/global.context";
 import doctor from "../assets/images/doctor.jpg";
@@ -7,15 +7,21 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 const Card = (props) => {
-  const { state, addFav, removeFav } = useContext(ContextGlobal);
+  const { state, addFav, removeFav, getFavs } = useContext(ContextGlobal);
   const location = useLocation();
 
   const [faved, isFaved] = useState(false);
+  const [dentist, setDentist] = useState([])
 
   const handleFav = () => {
     addFav(props.dentist);
     isFaved(true);
   };
+
+
+  useEffect(() => {
+    setDentist(getFavs())
+  }, []);
 
   const handleDeleteFav = () => {
     removeFav(props.dentist);
@@ -47,9 +53,9 @@ const Card = (props) => {
         disabled={isFavPage ? false : faved}
       >
         <FontAwesomeIcon
-          icon={isSolid ? solidStar : regularStar}
+          icon={isFavPage ? solidStar : regularStar}
           onClick={handleIconClick}
-          style={{ color: isSolid ? '#ffa500' : 'black' }}
+          style={{ color: isFavPage ? '#ffa500' : 'black' }}
         />
       </button>
     </div>
