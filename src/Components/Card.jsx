@@ -7,34 +7,24 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 const Card = (props) => {
-  const { state, addFav, removeFav, getFavs } = useContext(ContextGlobal);
+  const { addFav, removeFav, getFavs } = useContext(ContextGlobal);
+
   const location = useLocation();
 
   const [faved, isFaved] = useState(false);
-  const [dentists, setDentists] = useState({});
 
   const handleFav = () => {
     addFav({ ...props.dentist, isFav: true });
-    setIsSolid(!isSolid);
-
     isFaved(true);
   };
 
   const handleDeleteFav = () => {
-    removeFav(props.dentist);
+    removeFav(props.dentist.id);
   };
-
-
-  useEffect(() => {
-    console.log('getFavs() :>> ', getFavs());
-  }, [])
-  
-
 
   const isFavPage = location.pathname === "/favs";
 
-  // CAMBIA ESTRELLA REGULAR A SOLID
-  const [isSolid, setIsSolid] = useState(false);
+  const [isSolid, setIsSolid] = useState(props.dentist.isFav);
 
   return (
     <div className="card">
@@ -50,11 +40,11 @@ const Card = (props) => {
       <button
         onClick={isFavPage ? handleDeleteFav : handleFav}
         className="favButton"
-        disabled={isFavPage ? false : faved}
+        /*  disabled={isFavPage || props.dentist.isFav} */
         id="btnStar"
       >
         <FontAwesomeIcon
-          icon={isSolid || props.dentist.isFav   ? solidStar : regularStar}
+          icon={isSolid || props.dentist.isFav ? solidStar : regularStar}
           style={{
             color: isSolid || props.dentist.isFav ? "#ffa500" : "black",
           }}

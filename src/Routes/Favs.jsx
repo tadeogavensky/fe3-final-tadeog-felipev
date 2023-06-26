@@ -3,18 +3,20 @@ import Card from "../Components/Card";
 import { ContextGlobal } from "../Components/utils/global.context";
 
 const Favs = () => {
-  const { state, getFavs } = useContext(ContextGlobal);
+  const { state } = useContext(ContextGlobal);
   const [favs, setFavs] = useState([]);
   const [isFromLocalStorage, setIsFromLocalStorage] = useState(false);
 
   useEffect(() => {
-    setFavs(state.data);
-    setIsFromLocalStorage(true);
-  }, [state.data]);
+    if (state.favs) {
+      setFavs(state.favs);
+      setIsFromLocalStorage(true);
+    }
+  }, [state.favs]);
 
-  useEffect(() => {
-    getFavs();
-  }, []);
+  if (!isFromLocalStorage) {
+    return <p>Loading favorite dentists...</p>;
+  }
 
   return (
     <>
@@ -29,20 +31,14 @@ const Favs = () => {
           Clear Favs
         </button>
       </div>
-      {isFromLocalStorage ? (
-        <>
-          {favs.length > 0 ? (
-            <div className="card-grid">
-              {favs.map((dentist) => (
-                <Card dentist={dentist} key={dentist.id} />
-              ))}
-            </div>
-          ) : (
-            <p>No favorite dentists available.</p>
-          )}
-        </>
+      {favs.length > 0 ? (
+        <div className="card-grid">
+          {favs.map((dentist) => (
+            <Card dentist={dentist} key={dentist.id} />
+          ))}
+        </div>
       ) : (
-        <p>Loading favorite dentists...</p>
+        <p>No favorite dentists available.</p>
       )}
     </>
   );
