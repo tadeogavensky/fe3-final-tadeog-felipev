@@ -8,8 +8,10 @@ const Favs = () => {
   const [isFromLocalStorage, setIsFromLocalStorage] = useState(false);
 
   useEffect(() => {
-    if (state.favs) {
-      setFavs(state.favs);
+    const favData = JSON.parse(localStorage.getItem("favData"));
+
+    if (favData && favData.length > 0) {
+      setFavs(favData);
       setIsFromLocalStorage(true);
     }
   }, [state.favs]);

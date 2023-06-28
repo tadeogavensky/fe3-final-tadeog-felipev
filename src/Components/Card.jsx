@@ -7,19 +7,27 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 const Card = (props) => {
-  const { addFav, removeFav, getFavs } = useContext(ContextGlobal);
+  const { addFav, removeFav } = useContext(ContextGlobal);
 
   const location = useLocation();
 
   const [faved, isFaved] = useState(false);
 
+  const [btnDisable, isDisabled] = useState(false);
+
+  useEffect(() => {
+    setIsSolid(props.dentist.isFav);
+  }, [props.dentist.isFav]);
+
   const handleFav = () => {
     addFav({ ...props.dentist, isFav: true });
     isFaved(true);
+    isDisabled(true);
   };
 
   const handleDeleteFav = () => {
     removeFav(props.dentist.id);
+    console.log('props.dentist.id :>> ', props.dentist.id);
   };
 
   const isFavPage = location.pathname === "/favs";
@@ -37,20 +45,34 @@ const Card = (props) => {
         Ir al detalle
       </Link>
 
-      <button
-        onClick={isFavPage ? handleDeleteFav : handleFav}
-        className="favButton"
-        /*  disabled={isFavPage || props.dentist.isFav} */
-        id="btnStar"
-      >
-        <FontAwesomeIcon
-          icon={isSolid || props.dentist.isFav ? solidStar : regularStar}
-          style={{
-            color: isSolid || props.dentist.isFav ? "#6750a4" : "black",
-          }}
-          id="star"
-        />
-      </button>
+      {!isFavPage ? (
+        <button
+          onClick={handleFav}
+          className="favButton"
+          id="btnStar"
+          disabled={btnDisable}
+        >
+          <FontAwesomeIcon
+            icon={isSolid || faved ? solidStar : regularStar}
+            style={{
+              color: isSolid || props.dentist.isFav ? "#6750a4" : "black",
+            }}
+            id="star"
+          />
+        </button>
+      ) : (
+        <button
+          onClick={isFavPage ? handleDeleteFav : handleFav}
+          className="favButton"
+          id="btnStar"
+        >
+          <FontAwesomeIcon
+            icon={isSolid ? solidStar : regularStar}
+            style={{ color: isSolid ? "#6750a4" : "black" }}
+            id="star"
+          />
+        </button>
+      )}
     </div>
   );
 };

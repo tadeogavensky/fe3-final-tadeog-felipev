@@ -16,10 +16,10 @@ const reducer = (state, action) => {
       return { ...state, theme: action.payload };
 
     case "ADD_FAV":
-      const updatedData = state.favs
-        ? [...state.favs, action.payload]
-        : [action.payload];
-      localStorage.setItem("favData", JSON.stringify(updatedData));
+      const updatedData = state.favs 
+        ? [...state.favs, action.payload] //si ya hay favoritos, hace spread, los incorpora y trae el nuevo
+        : [action.payload]; //si no hay trae el string entero
+      localStorage.setItem("favData", JSON.stringify(updatedData)); //guarda el array en localStorage
       return { ...state, favs: updatedData };
 
     case "REMOVE_FAV":
@@ -27,6 +27,7 @@ const reducer = (state, action) => {
         ? state.favs.filter((item) => item.id !== action.payload)
         : [];
       localStorage.setItem("favData", JSON.stringify(filteredData));
+      console.log('filteredData :>> ', filteredData);
       return { ...state, favs: filteredData };
     default:
       return state;
@@ -56,7 +57,6 @@ export const ContextProvider = ({ children }) => {
   };
 
   const removeFav = (id) => {
-    console.log(id);
     dispatch({ type: "REMOVE_FAV", payload: id });
   };
 
