@@ -17,8 +17,8 @@ const Favs = () => {
   }, []);
 
   return (
-    <>
-      <div className="row center-row">
+    <div className="favs">
+      <div className="row center-row title">
         <h1 style={{ marginRight: 40 }}>Dentists Favs</h1>
         <button
           onClick={() => {
@@ -44,7 +44,7 @@ const Favs = () => {
       ) : (
         <p>Loading favorite dentists...</p>
       )}
-    </>
+    </div>
   );
 };
 

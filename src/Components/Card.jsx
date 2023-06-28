@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ContextGlobal } from "./utils/global.context";
-import doctor from "../assets/images/doctor.jpg";
+import doctor from "../assets/images/doctor.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
@@ -56,7 +56,7 @@ const Card = (props) => {
         <FontAwesomeIcon
           icon={isSolid || props.dentist.isFav   ? solidStar : regularStar}
           style={{
-            color: isSolid || props.dentist.isFav ? "#ffa500" : "black",
+            color: isSolid || props.dentist.isFav ? "#6750a4" : "black",
           }}
           id="star"
         />

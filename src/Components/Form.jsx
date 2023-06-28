@@ -32,8 +32,9 @@ const Form = () => {
   return (
     <div>
       <form onSubmit={handleForm}>
-        <label htmlFor="">Nombre completo</label>
+        <label className="nombre" htmlFor="">Nombre completo</label>
         <input
+          className="form-content"
           type="text"
           placeholder="Don Perez del Demonio III"
           onChange={(e) => {
@@ -44,8 +45,9 @@ const Form = () => {
           }}
         />
 
-        <label htmlFor="">Email</label>
+        <label className='email' htmlFor="">Email</label>
         <input
+          className="form-content"
           type="text"
           placeholder="example@example.com"
           onChange={(e) => {
@@ -56,9 +58,10 @@ const Form = () => {
           }}
         />
 
-        {message && <p style={{ color: message.color }}>{message.text}</p>}
+        
 
         <button>Submit</button>
+        {message && <p className="warning" style={{ color: message.color }}>{message.text}</p>}
       </form>
     </div>
   );
