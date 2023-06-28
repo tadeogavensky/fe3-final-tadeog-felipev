@@ -1,7 +1,12 @@
 :root {
-  --primary-color: #ff0000;
-  --secondary-color: #00ff00;
+  --primary-color: #6750a4;
+  --secondary-color: #e9ddff;
   --text-color: #000000;
+  --card-color: #f7f2fa;
+  --accent-color: #006b5f;
+  --dark-background: #1c1b1f;
+  --semidark-background:  #2e2d32;
+
 }
 
 body {
@@ -27,16 +32,18 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #e9ddff;
+  background-color: var(--primary-color);
   padding-left: 10%;
   padding-right: 10%;
 }
 
 nav img {
   height: 40px;
+  filter: invert(100%);
 }
+
 nav a {
-  color: #000;
+  color: var(--secondary-color);
   text-decoration: none;
   margin: 10px;
   cursor: pointer;
@@ -405,20 +412,28 @@ tr:nth-child(even) {
   background-color: #1c1b1f;
 }
 
-.dark a {
-  color: white;
+.dark nav{
+  background-color: #6750a4;
 }
 
-.dark > h1 {
-  color: white;
+.dark a {
+  color: var(--secondary-color);
+}
+
+.dark h1 {
+  color: var(--secondary-color);
+}
+
+.dark h4 {
+  color: var(--secondary-color);
 }
 
 .dark #detail-link {
-  color: blue;
+  color: var(--primary-color);
 }
 
 .dark #h1 {
-  color: white;
+  color: var(--secondary-color);
 }
 
 .dark .card {
@@ -449,7 +464,7 @@ label.toggle {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--secondary-color);
   transition: 0.4s;
   border-radius: 34px;
 }
@@ -461,47 +476,19 @@ label.toggle {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--card-color);
   transition: 0.4s;
-  border-radius: 50%;
-}
-
-.icon {
-  position: absolute;
-  top: 4px;
-  transition: 0.4s;
-}
-
-.sun {
-  left: 4px;
-  width: 26px;
-  height: 26px;
-  background-color: yellow;
-  border-radius: 50%;
-}
-
-.moon {
-  right: 4px;
-  width: 22px;
-  height: 22px;
-  background-color: #888;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--primary-color);
 }
+
+
 
 input:checked + .slider:before {
   transform: translateX(26px);
-}
-
-input:checked + .slider .sun {
-  opacity: 0;
-}
-
-input:checked + .slider .moon {
-  opacity: 1;
 }
 
 #mobile {
