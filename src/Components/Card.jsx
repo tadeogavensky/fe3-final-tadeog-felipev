@@ -60,7 +60,7 @@ const Card = (props) => {
           <FontAwesomeIcon
             icon={isSolid || faved ? solidStar : regularStar}
             style={{
-              color: isSolid || props.dentist.isFav ? "#6750a4" : "black",
+              color: isSolid || props.dentist.isFav ? "#6750a4" : "#6750a4",
             }}
             id="star"
           />
