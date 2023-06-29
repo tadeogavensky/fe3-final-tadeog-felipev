@@ -412,6 +412,10 @@ tr:nth-child(even) {
   background-color: #1c1b1f;
 }
 
+.dark body {
+  background-color: #1c1b1f;
+}
+
 .dark nav{
   background-color: #6750a4;
 }
