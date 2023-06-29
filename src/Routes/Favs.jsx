@@ -4,7 +4,7 @@ import { ContextGlobal } from "../Components/utils/global.context";
 
 const Favs = () => {
   const { state } = useContext(ContextGlobal);
-  const favs = state?.favs || []; // Use empty array as default value if favs is undefined
+  const favs = state?.favs || [];
 
   return (
     <div className="favs">

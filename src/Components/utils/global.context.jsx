@@ -2,8 +2,8 @@ import { createContext, useEffect, useReducer } from "react";
 import axios from "axios";
 
 export const initialState = {
-  theme: "LIGHT MODE",
-  favs: JSON.parse(localStorage.getItem("favData")) || [], // Initialize with localStorage value or empty array
+  theme: JSON.parse(localStorage.getItem("theme")) || "",
+  favs: JSON.parse(localStorage.getItem("favData")) || [],
   dentists: [],
 };
 
@@ -13,6 +13,7 @@ const reducer = (state, action) => {
       return { ...state, dentists: [...action.payload] };
 
     case "SET_THEME":
+      localStorage.setItem("theme", JSON.stringify(action.payload));
       return { ...state, theme: action.payload };
 
     case "ADD_FAV":
@@ -35,7 +36,6 @@ const reducer = (state, action) => {
 };
 
 export default reducer;
-
 
 export const ContextGlobal = createContext(undefined);
 

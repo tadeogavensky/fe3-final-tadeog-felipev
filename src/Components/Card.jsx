@@ -7,7 +7,7 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 const Card = (props) => {
-  const { addFav, removeFav} = useContext(ContextGlobal);
+  const { addFav, removeFav } = useContext(ContextGlobal);
 
   const location = useLocation();
 
