@@ -2,24 +2,24 @@ import { createContext, useEffect, useReducer } from "react";
 import axios from "axios";
 
 export const initialState = {
-  theme: "",
-  favs: [],
+  theme: "LIGHT MODE",
+  favs: JSON.parse(localStorage.getItem("favData")) || [], // Initialize with localStorage value or empty array
   dentists: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_DENTISTS":
-      return { dentists: [...action.payload] };
+      return { ...state, dentists: [...action.payload] };
 
     case "SET_THEME":
       return { ...state, theme: action.payload };
 
     case "ADD_FAV":
-      const updatedData = state.favs 
-        ? [...state.favs, action.payload] //si ya hay favoritos, hace spread, los incorpora y trae el nuevo
-        : [action.payload]; //si no hay trae el string entero
-      localStorage.setItem("favData", JSON.stringify(updatedData)); //guarda el array en localStorage
+      const updatedData = state.favs
+        ? [...state.favs, action.payload]
+        : [action.payload];
+      localStorage.setItem("favData", JSON.stringify(updatedData));
       return { ...state, favs: updatedData };
 
     case "REMOVE_FAV":
@@ -27,14 +27,15 @@ const reducer = (state, action) => {
         ? state.favs.filter((item) => item.id !== action.payload)
         : [];
       localStorage.setItem("favData", JSON.stringify(filteredData));
-      console.log('filteredData :>> ', filteredData);
       return { ...state, favs: filteredData };
+
     default:
       return state;
   }
 };
 
 export default reducer;
+
 
 export const ContextGlobal = createContext(undefined);
 
@@ -52,7 +53,6 @@ export const ContextProvider = ({ children }) => {
   };
 
   const addFav = (item) => {
-    console.log("item :>> ", item);
     dispatch({ type: "ADD_FAV", payload: item });
   };
 

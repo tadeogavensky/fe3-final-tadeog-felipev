@@ -1,24 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Card from "../Components/Card";
 import { ContextGlobal } from "../Components/utils/global.context";
 
 const Favs = () => {
   const { state } = useContext(ContextGlobal);
-  const [favs, setFavs] = useState([]);
-  const [isFromLocalStorage, setIsFromLocalStorage] = useState(false);
-
-  useEffect(() => {
-    const favData = JSON.parse(localStorage.getItem("favData"));
-
-    if (favData && favData.length > 0) {
-      setFavs(favData);
-      setIsFromLocalStorage(true);
-    }
-  }, [state.favs]);
-
-  if (!isFromLocalStorage) {
-    return <p>Loading favorite dentists...</p>;
-  }
+  const favs = state?.favs || []; // Use empty array as default value if favs is undefined
 
   return (
     <div className="favs">

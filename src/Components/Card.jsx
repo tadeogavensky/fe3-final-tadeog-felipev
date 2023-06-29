@@ -7,27 +7,32 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 const Card = (props) => {
-  const { addFav, removeFav } = useContext(ContextGlobal);
+  const { addFav, removeFav} = useContext(ContextGlobal);
 
   const location = useLocation();
 
   const [faved, isFaved] = useState(false);
 
-  const [btnDisable, isDisabled] = useState(false);
-
   useEffect(() => {
     setIsSolid(props.dentist.isFav);
   }, [props.dentist.isFav]);
 
+  const favs = JSON.parse(localStorage.getItem("favData")) || [];
+
+  useEffect(() => {
+    if (favs) {
+      const isDentistFav = favs.some((fav) => fav.id === props.dentist.id);
+      isFaved(isDentistFav);
+    }
+  }, [props.dentist.id, favs]);
+
   const handleFav = () => {
     addFav({ ...props.dentist, isFav: true });
     isFaved(true);
-    isDisabled(true);
   };
 
   const handleDeleteFav = () => {
     removeFav(props.dentist.id);
-    console.log('props.dentist.id :>> ', props.dentist.id);
   };
 
   const isFavPage = location.pathname === "/favs";
@@ -50,7 +55,7 @@ const Card = (props) => {
           onClick={handleFav}
           className="favButton"
           id="btnStar"
-          disabled={btnDisable}
+          disabled={faved}
         >
           <FontAwesomeIcon
             icon={isSolid || faved ? solidStar : regularStar}
