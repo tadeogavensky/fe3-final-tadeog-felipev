@@ -13,6 +13,9 @@ const Navbar = () => {
   const toggleTheme = () => {
     const newTheme =
       theme === THEME.darkMode ? THEME.lightMode : THEME.darkMode;
+      theme === THEME.darkMode
+      ? document.querySelector("body").classList.remove("dark")
+      : document.querySelector("body").classList.add("dark");
     setTheme(newTheme);
   };
 

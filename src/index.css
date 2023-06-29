@@ -25,6 +25,9 @@ code {
     monospace;
 }
 
+
+
+
 /* NAVBAR */
 
 nav {
@@ -517,6 +520,8 @@ input:checked + .slider:before {
     background-color: inherit;
     color: white;
   }
+
+
 
   .sideMenu {
     position: absolute;
